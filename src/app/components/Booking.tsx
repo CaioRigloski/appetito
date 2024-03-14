@@ -29,13 +29,37 @@ const VerticalBlackBar = styled.div`
 const Form = styled.form`
   display: grid;
   grid-template-columns: max-content 30.688rem;
-  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  grid-template-areas:
+  "nameLabel name"
+  "emailLabel email"
+  "phoneLabel phone"
+  "btn btn"
+  ;
   gap: 1.688rem;
   > label {
     font-size: var(--large-text);
   }
   > input {
     height: 2.188rem;
+  }
+  > button {
+    grid-area: btn;
+    width: 7.313rem;
+    height: 100%;
+    list-style: none;
+    border: none;
+    background-color: var(--green-flag-color);
+    font-family: inherit;
+    font-size: var(--medium-text);
+    text-align: center;
+    cursor: pointer;
+    justify-self: center;
+    color: white;
+  }
+  > button:hover {
+    transition: 0.5s;
+    transform: scale(95%);
   }
 `
 
@@ -56,6 +80,7 @@ export default function Booking() {
         <input id="email" type="email"/>
         <label htmlFor="phone">phone</label>
         <input id="phone" type="tel"/>
+        <button type="submit">send</button>
       </Form>
     </Section>
   )
