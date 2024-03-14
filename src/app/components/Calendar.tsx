@@ -2,7 +2,7 @@
 
 import styled from "styled-components"
 import Week, { weekInfo } from "../interfaces/week.interface"
-import { ChangeEvent, useState } from "react"
+import { ChangeEvent, useEffect, useState } from "react"
 import BookingDate from "../interfaces/bookingDate.interface"
 import Hour from "../interfaces/hour.interface"
 
@@ -118,10 +118,11 @@ export default function Calendar(props: {onClick?: MouseEvent}) {
   function getWeek(index: number) {
     const date = new Date()
     let weekDays: weekInfo[] = []
-
-    // Get 7 days.
+    
+    // Get 7 days and set current month displayed.
     if(index > 0) {
       date.setDate(date.getDate() + 7 * index)
+      setMonth(date.toLocaleString('en-US', { month: 'long' }))
     }
 
     // First day must be sunday (0).
@@ -138,6 +139,7 @@ export default function Calendar(props: {onClick?: MouseEvent}) {
       })
       date.setDate(date.getDate() + 1); 
     }
+
     return {index: index, dateInfo: weekDays}
   }
 
@@ -256,7 +258,7 @@ export default function Calendar(props: {onClick?: MouseEvent}) {
         <p>{String(bookingDate?.hour?.hour).padStart(2, '0')}:{String(bookingDate?.hour?.minute).padStart(2, '0')} {bookingDate?.period}</p>
       </BookingContainer>
       <WeekSelector>
-        <h3>{month.toUpperCase()}</h3>
+        <h3>{month?.toUpperCase()}</h3>
         <div>
           <div>
             { week.index !== 0 && <button type="button" onClick={minusWeekIndex}>&lt;</button> }
