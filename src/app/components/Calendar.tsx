@@ -105,15 +105,10 @@ export default function Calendar(props: {onClick?: MouseEvent}) {
   const [ week, setWeek ] = useState<Week>(getWeek(0))
   const [ hours, setHours ] = useState<number[]>(getBusinessHours())
   const [ minutes, setMinutes ] = useState<number[]>([0, 30])
-
+  
   const weekNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
-  const [ bookingDate, setBookingDate ] = useState<BookingDate>({
-    month: new Date().toLocaleString('en-US', { month: 'long' }),
-    day: new Date().getDate(),
-    dayName: weekNames[new Date().getDay()],
-    hour: hourOptions().hourDisplayAm.length > 0 ? hourOptions().hourDisplayAm[0] : hourOptions().hourDisplayPm[0],
-    period: hourOptions().hourDisplayAm.length > 0 ? "AM" : "PM"
-  })
+  const [ bookingDate, setBookingDate ] = useState<BookingDate>(getDefaultBookingDate())
+
 
   function getMonth() {
     const date = new Date()
@@ -149,6 +144,7 @@ export default function Calendar(props: {onClick?: MouseEvent}) {
   function getBusinessHours() {
     let hours: number[] = []
 
+    // Range numbers for 8AM to 10PM.
     for(let i = 1; i <= 12; i++) {
       hours.push(i)
     }
@@ -156,6 +152,18 @@ export default function Calendar(props: {onClick?: MouseEvent}) {
     return hours
   }
     
+  function getDefaultBookingDate() {
+    const defaultBookingDate: BookingDate = {
+      month: new Date().toLocaleString('en-US', { month: 'long' }),
+      day: new Date().getDate(),
+      dayName: weekNames[new Date().getDay()],
+      hour: hourOptions().hourDisplayAm.length > 0 ? hourOptions().hourDisplayAm[0] : hourOptions().hourDisplayPm[0],
+      period: hourOptions().hourDisplayAm.length > 0 ? "AM" : "PM"
+    }
+
+    return defaultBookingDate
+  }
+
   function hourOptions() {
     const hourDisplayAm: Hour[] | null = []
     const hourDisplayPm: Hour[] | null = []
