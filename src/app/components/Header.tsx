@@ -8,7 +8,7 @@ const HeaderWrap = styled.header`
   grid-template-rows: auto auto;
   grid-template-columns: max-content;
   justify-items: center;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   z-index: 999;
@@ -78,9 +78,9 @@ export default function Header() {
         <Flag width="5.25rem" height="0.533rem"/>
       </LogoWrap>
       <Menu>
-        <a href="home"><div>home</div></a>
-        <a href="menu"><div>menu</div></a>
-        <a href="booking"><div>booking</div></a>
+        <a href="#home"><div>home</div></a>
+        <a href="#menu"><div>menu</div></a>
+        <a href="#booking"><div>booking</div></a>
       </Menu>
     </HeaderWrap>
   )

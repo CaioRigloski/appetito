@@ -37,7 +37,7 @@ const MenuBanner = styled.div`
   box-shadow: 4px 2px 10px var(--black-shadow);
   top: calc(-14.5rem / 2);
   left: calc((100vw - 52.563rem) / 2);
-  z-index: 999;
+  z-index: 1;
   > h3 {
     font-size: var(--title);
     font-weight: inherit;
@@ -99,7 +99,7 @@ export default function Menu() {
   ]
 
   return (
-    <Section>
+    <Section id="menu">
       <MenuBanner>
         <h3>Menu</h3>
       </MenuBanner>

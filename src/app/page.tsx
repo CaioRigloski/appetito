@@ -88,7 +88,7 @@ export default function Home() {
   return (
     <>
       <Header/>
-      <main>
+      <main id="home">
         <Section>
           <Flag width="24.063rem" height="100%" isAnimated style={{gridArea: "flag", alignSelf: "self-end"}}/>
           <div>

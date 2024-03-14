@@ -7,19 +7,36 @@ import Calendar from "./Calendar"
 
 const Section = styled.section`
   display: grid;
-  grid-template-columns: 10.688rem 1fr;
-  grid-template-rows: 1fr;
+  grid-template-columns: 100vw;
+  grid-template-rows: 1fr 1fr;
   position: relative;
   height: 100vh;
   background-color: var(--pallete-light-brown-color);
   align-items: center;
   justify-items: center;
+  position: relative;
 `
 const VerticalBlackBar = styled.div`
   width: 3.75rem;  
   height: 100%;
   background-color: var(--pallete-black-color-90);
   justify-self: end;
+  position: absolute;
+  top: 0;
+  left: 6.938rem;
+`
+
+const Form = styled.form`
+  display: grid;
+  grid-template-columns: max-content 30.688rem;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 1.688rem;
+  > label {
+    font-size: var(--large-text);
+  }
+  > input {
+    height: 2.188rem;
+  }
 `
 
 export default function Booking() {
@@ -28,10 +45,18 @@ export default function Booking() {
   
 
   return (
-    <Section ref={ref}>
+    <Section ref={ref} id="booking">
       <VerticalRedBar isInView={isInView}/>
       <VerticalBlackBar/>
       <Calendar/>
+      <Form>
+        <label htmlFor="name">name</label>
+        <input id="name" type="text"/>
+        <label htmlFor="email">email</label>
+        <input id="email" type="email"/>
+        <label htmlFor="phone">phone</label>
+        <input id="phone" type="tel"/>
+      </Form>
     </Section>
   )
 }

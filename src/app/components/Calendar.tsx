@@ -13,6 +13,7 @@ const Container = styled.div`
   font-family: Montserrat;
   font-weight: 600;
   text-align: center;
+  align-self: self-end;
 `
   
 const BookingContainer = styled.div`
@@ -99,13 +100,12 @@ const WeekSelector = styled.div`
   }
 `
 
-
 export default function Calendar(props: {onClick?: MouseEvent}) {
   const [ month, setMonth ] = useState<string>(getMonth())
   const [ week, setWeek ] = useState<Week>(getWeek(0))
   const [ hours, setHours ] = useState<number[]>(getBusinessHours())
   const [ minutes, setMinutes ] = useState<number[]>([0, 30])
-  
+
   const weekNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
   const [ bookingDate, setBookingDate ] = useState<BookingDate>(getDefaultBookingDate())
 
