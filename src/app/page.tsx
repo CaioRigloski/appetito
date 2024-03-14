@@ -4,9 +4,10 @@ import styled, { keyframes } from "styled-components"
 import Header from "./components/Header"
 import Flag from "./components/Flag"
 import Image from "next/image"
-import homeFood from "../../public/images/homeFood.png"
 import Menu from "./components/Menu"
 import Booking from "./components/Booking"
+import homeFood from "../../public/images/homeFood.png"
+import pasta from "../../public/images/pasta.png"
 
 
 const rotateText = keyframes`
@@ -46,8 +47,8 @@ const Section = styled.section`
   ;
   height: 100vh;
   max-height: 100vh;
-  overflow: hidden;
   position: relative;
+  overflow-x: clip;
   & > :nth-child(2) {
     grid-area: black;
     display: flex;
@@ -75,6 +76,12 @@ const Section = styled.section`
     background-color: var(--pallete-light-brown-color);
     animation: ${expandBackground} 0.5s ease-in;
   }
+  > img {
+    position: absolute;
+    bottom: -14.375rem;
+    left: 0;
+    z-index: 1;
+  }
 `
 
 const ImageWrap = styled.div`
@@ -97,6 +104,7 @@ export default function Home() {
           <ImageWrap>
             <Image src={homeFood} alt="Italian Dish" sizes="47.25rem, 46.813rem" priority/>
           </ImageWrap>
+          <Image src={pasta} alt="Pasta Dish"/>
         </Section>
         <Menu/>
         <Booking/>
